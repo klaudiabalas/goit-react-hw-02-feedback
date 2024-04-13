@@ -19,11 +19,12 @@ export class App extends React.Component {
   };
 
   positiveFeedbackPercentage = () => {
-    return Math.round((this.state.good / this.countTotal) * 100);
+    return Math.round((this.state.good / this.countTotal()) * 100);
   };
 
   handleFeedback = event => {
-    this.setState({ [event]: this.state[event] + 1 });
+    const { name } = event.target;
+    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
 
   render() {
