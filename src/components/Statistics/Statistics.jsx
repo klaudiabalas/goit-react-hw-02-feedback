@@ -1,5 +1,5 @@
-import { Notification } from 'components/Notification/Notification';
 import PropTypes from 'prop-types';
+import css from './Statistics.module.css';
 
 export const Statistics = ({
   good,
@@ -8,26 +8,21 @@ export const Statistics = ({
   total = 0,
   positivePercentage = 0,
 }) => {
-  if (good || neutral || bad) {
-    return (
-      <>
-        <div className="statistics-container">
-          <h2 className="statistics-header">Statistics</h2>
-          <ul className="statistics-list">
-            <li className="statistics-item">Good : {good}</li>
-            <li className="statistics-item">Neutral : {neutral}</li>
-            <li className="statistics-item">Bad : {bad}</li>
-            <li className="statistics-item">Total : {total}</li>
-            <li className="statistics-item">
-              Positive feedback : {positivePercentage} %
-            </li>
-          </ul>
-        </div>
-      </>
-    );
-  } else {
-    return <Notification text="There is no feedback" />;
-  }
+  return (
+    <>
+      <div className={css.statistics_container}>
+        <ul className={css.statistics_list}>
+          <li className={css.statistics_item}>Good : {good}</li>
+          <li className={css.statistics_item}>Neutral : {neutral}</li>
+          <li className={css.statistics_item}>Bad : {bad}</li>
+          <li className={css.statistics_item}>Total : {total}</li>
+          <li className={css.statistics_item}>
+            Positive feedback : {positivePercentage} %
+          </li>
+        </ul>
+      </div>
+    </>
+  );
 };
 
 Statistics.propTypes = {
